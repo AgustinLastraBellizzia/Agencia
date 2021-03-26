@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
 use Illuminate\Http\Request;
 use App\Propiedad;
 
@@ -40,5 +41,17 @@ class PropiedadesController extends Controller
     function listPropiedades(Request $request){
         $data = Propiedad::paginate(4);
         return response()->json($data);
+    }
+
+    function detallePropiedad(Request $request,$slug){
+        $propiedad = Propiedad::where('slug', $slug) ->first();
+
+        if(!$propiedad){
+            return abort(404);
+        }
+
+        $categoria = Categoria::find($propiedad->categoria_id);
+
+        return view('detalle', [ 'propiedad' => $propiedad, 'categoria'=>$categoria]);
     }
 }
