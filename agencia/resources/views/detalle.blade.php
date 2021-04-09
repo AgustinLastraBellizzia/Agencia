@@ -30,23 +30,25 @@
       </div>
     </div>
   </section><!-- End Intro Single-->
-
+  
   <!-- ======= Property Single ======= -->
   <section class="property-single nav-arrow-b">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
+          
           <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
-            <div class="carousel-item-b">
-              <img src="{{ asset('assets/img/slide-2.jpg') }}" alt="">
-            </div>
-            <div class="carousel-item-b">
-              <img src="{{ asset('assets/img/slide-3.jpg') }}" alt="">
-            </div>
-            <div class="carousel-item-b">
-              <img src="{{ asset('assets/img/slide-1.jpg') }}" alt="">
-            </div>
+            @if($propiedad->imagenes_propiedad->count() >0 )
+              @foreach($propiedad->imagenes_propiedad as $imagen)
+                <div class="carousel-item-b">
+                  <img src="{{ URL::to('/') }}{{ $imagen->url_imagen }}" alt="">
+                </div>
+              @endforeach
+            @else
+              <img src="{{ URL::to('/') }}/imagenes/propiedades/imagennodisponible.jpg" alt="">
+            @endif
           </div>
+          
           <div class="row justify-content-between">
             <div class="col-md-5 col-lg-4">
               <div class="property-price d-flex justify-content-center foo">
@@ -79,7 +81,7 @@
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Property Type:</strong>
-                      <span>{{$categoria->nombre_categoria}}</span>
+                      <span>{{$propiedad->categoria->nombre_categoria}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Status:</strong>
@@ -181,28 +183,18 @@
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="property-agent">
-                <h4 class="title-agent">Anabella Geller</h4>
+                <h4 class="title-agent">{{$propiedad->agente->nombre}}</h4>
                 <p class="color-text-a">
-                  Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                  dui. Quisque velit nisi,
-                  pretium ut lacinia in, elementum id enim.
+                  {{$propiedad->agente->experiencia}}
                 </p>
                 <ul class="list-unstyled">
                   <li class="d-flex justify-content-between">
                     <strong>Phone:</strong>
-                    <span class="color-text-a">(222) 4568932</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Mobile:</strong>
-                    <span class="color-text-a">777 287 378 737</span>
+                    <span class="color-text-a">{{$propiedad->agente->telefono}}</span>
                   </li>
                   <li class="d-flex justify-content-between">
                     <strong>Email:</strong>
-                    <span class="color-text-a">annabella@example.com</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Skype:</strong>
-                    <span class="color-text-a">Annabela.ge</span>
+                    <span class="color-text-a">{{$propiedad->agente->correo}}</span>
                   </li>
                 </ul>
                 <div class="socials-a">

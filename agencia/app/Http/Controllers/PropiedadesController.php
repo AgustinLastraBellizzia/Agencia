@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Categoria;
 use Illuminate\Http\Request;
 use App\Propiedad;
+use App\ImagenesPropiedad;
+
 
 class PropiedadesController extends Controller
 {
@@ -50,8 +52,8 @@ class PropiedadesController extends Controller
             return abort(404);
         }
 
-        $categoria = Categoria::find($propiedad->categoria_id);
+        
 
-        return view('detalle', [ 'propiedad' => $propiedad, 'categoria'=>$categoria]);
+        return view('detalle', [ 'propiedad' => $propiedad ]);
     }
 }

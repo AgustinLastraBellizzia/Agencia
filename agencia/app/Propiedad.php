@@ -18,5 +18,21 @@ class Propiedad extends Model
             ]
         ];
     }
-    //protected $table = 'mi_propiedad';
+
+    //protected $table = 'propiedades';
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function imagenes_propiedad()
+    {
+        return $this->hasMany(ImagenesPropiedad::class);
+    }
+
+    public function agente()
+    {
+        return $this->hasOne(Agente::class);
+    }
 }

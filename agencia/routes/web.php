@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('home');
     //$data = Categoria::all();
     //return response()->json($data);
-});
+})->name('home');
 
 Route::get('/crearpropiedad', [PropiedadesController::class,'createPropiedad']);
 Route::get('/listapropiedades', [PropiedadesController::class,'listPropiedades']);
