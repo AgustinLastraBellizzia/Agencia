@@ -33,6 +33,6 @@ class Propiedad extends Model
 
     public function agente()
     {
-        return $this->hasOne(Agente::class);
+        return $this->hasMany(Agente::class);
     }
 }
