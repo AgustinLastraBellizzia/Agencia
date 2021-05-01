@@ -235,25 +235,27 @@
             </div>
             <div class="col-md-12 col-lg-4">
               <div class="property-contact">
-                <form class="form-a">
+                <form class="form-a" method="post" action="{{route('save.contacto')}}">
+                  <input id="propiedad_id" name="propiedad_id" type="hidden" value="{{$propiedad->id}}">
+                  @csrf
                   <div class="row">
                     <div class="col-md-12 mb-1">
                       <div class="form-group">
-                        <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *" required>
+                        <input type="text" class="form-control form-control-lg form-control-a" id="inputName" name="inputName" placeholder=" Nombre *" required>
                       </div>
                     </div>
                     <div class="col-md-12 mb-1">
                       <div class="form-group">
-                        <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
+                        <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" name="inputEmail" placeholder="Email *" required>
                       </div>
                     </div>
                     <div class="col-md-12 mb-1">
                       <div class="form-group">
-                        <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
+                        <textarea id="textMessage" class="form-control" placeholder="Comentario *" name="inputMessage" cols="45" rows="8" required></textarea>
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <button type="submit" class="btn btn-a">Send Message</button>
+                      <button type="submit" class="btn btn-a">Contactar Agente</button>
                     </div>
                   </div>
                 </form>

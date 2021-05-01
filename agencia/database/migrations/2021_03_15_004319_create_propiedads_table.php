@@ -24,8 +24,8 @@ class CreatePropiedadsTable extends Migration
             $table->smallInteger('banios');
             $table->smallInteger('garages');
             $table->text('slug');
+
             $table->unsignedBigInteger('categoria_id');
-            
             $table->foreign('categoria_id','fk_propriedad_categoria')->references('id')->on('categorias')->onDelete('restrict')->onUpdate('restrict');
 
             $table->timestamps();
